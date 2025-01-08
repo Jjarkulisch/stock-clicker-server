@@ -16,7 +16,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors({
-    origin: 'https://jjarkulisch.github.io/stock-clicker-client',
+    origin: 'https://jjarkulisch.github.io',
     credentials: true,
     methods: ['GET', 'PUT', 'POST', 'PATCH']
 }));
