@@ -23,7 +23,7 @@ router.put('/', async (req, res) => { // new saves and ascenscion
 router.patch('/', async (req, res) => { // update existing save
     try {
         const uid = res.locals.user._id.toString();
-        const game = await Game.findOneAndUpdate({uid: uid}, req.body );
+        const game = await Game.findOneAndUpdate({uid: uid}, req.body);
         game.save();
         
         return res.status(204).send();

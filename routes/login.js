@@ -6,14 +6,21 @@ import User from '../schemas/User.js';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const credentials = req.body;
+    const authHeader = req.header('Authorization');
 
-    const user = await User.findOne({ username: credentials.username });
+    if (authHeader === undefined)
+        return res.status(401).send();
+
+    const credentials = atob(authHeader.split(' ')[1]).split(':');
+    const username = credentials[0];
+    const password = credentials[1];
+
+    const user = await User.findOne({ username: username });
 
     if (user === null)
         return res.status(400).send('Invalid credentials');
 
-    bcrypt.compare(credentials.password, user.password, (err, match) => {
+    bcrypt.compare(password, user.password, (err, match) => {
         if (err) {
             console.log('gg')
         }

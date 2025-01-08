@@ -7,16 +7,24 @@ import User from '../schemas/User.js';
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const credentials = req.body;
-    const userExists = await User.exists({ username: credentials.username });
+    const authHeader = req.header('Authorization');
+
+    if (authHeader === undefined)
+        return res.status(401).send();
+
+    const credentials = atob(authHeader.split(' ')[1]).split(':');
+    const username = credentials[0];
+    const password = credentials[1];
+
+    const userExists = await User.exists({ username: username });
 
     if (userExists)
         return res.status(409).send("User already exists");
 
     bcrypt.genSalt(11, (err, salt) => {
-        bcrypt.hash(credentials.password, salt, async (err, hash) => {
-            await User.create({ username: credentials.username, password: hash });
-            const user = await User.findOne({ username: credentials.username });
+        bcrypt.hash(password, salt, async (err, hash) => {
+            await User.create({ username: username, password: hash });
+            const user = await User.findOne({ username: username });
             const uid = user._id.toString();
 
             const authToken = jwt.sign(

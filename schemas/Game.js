@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 import db from '../mongo.js';
 
-const Savefile = new mongoose.Schema({
+import unitSchema from './Unit.js';
+
+const savefileSchema = new mongoose.Schema({
     uid: {
         type: String,
         required: true
@@ -14,13 +16,10 @@ const Savefile = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    units: {
-        type: Array,
-        default: []
-    },
+    units: [unitSchema],
     unlockedPlaces: {
         type: Array,
-        default: []
+        default: ['garden']
     },
     ascenscions: {
         type: Number,
@@ -40,4 +39,4 @@ const Savefile = new mongoose.Schema({
     }
 });
 
-export default db.model('Savefile', Savefile);
+export default db.model('Savefile', savefileSchema);
