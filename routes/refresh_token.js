@@ -41,7 +41,11 @@ router.post('/', async (req, res) => {
 
         res.cookie('refresh_token', refreshToken, {
             httpOnly: true,
-            sameSite: 'Strict'
+            secure: true,
+            sameSite: 'None',
+            domain: 'jjarkulisch.github.io',
+            path: '/',
+            maxAge: 1000 * 60 * 60 * 24 * 7
         });
 
         return res.status(200).json({
