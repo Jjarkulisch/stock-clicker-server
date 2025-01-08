@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
                 secure: true,
                 sameSite: 'None',
                 domain: 'jjarkulisch.github.io',
-                path: '/',
+                path: '/register',
                 maxAge: 1000 * 60 * 60 * 24 * 7
             });
 
