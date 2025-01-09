@@ -12,6 +12,7 @@ router.post('/', async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
+        partitioned: true,
         maxAge: 60 * 60 * 24 * 14
     });
 
