@@ -16,7 +16,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors({
-    origin: 'https://jjarkulisch.github.io',
+    origin: 'https://jarkulisch-jonatan-64d3f-7znvs.hosting.ssps.cajthaml.eu',
     credentials: true,
     methods: ['GET', 'PUT', 'POST', 'PATCH']
 }));

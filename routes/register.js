@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
             res.cookie('refresh_token', refreshToken, {
                 httpOnly: true,
                 secure: true,
-                sameSite: 'Lax',
+                sameSite: 'None',
                 maxAge: 60 * 60 * 24 * 14
             });
 
