@@ -12,9 +12,7 @@ router.post('/', async (req, res) => {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
-        domain: '.jjarkulisch.github.io',
-        path: '/logout',
-        maxAge: 1000 * 60 * 60 * 24 * 7
+        maxAge: 60 * 60 * 24 * 14
     });
 
     res.status(200).send();

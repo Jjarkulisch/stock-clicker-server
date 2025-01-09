@@ -43,9 +43,7 @@ router.post('/', async (req, res) => {
             httpOnly: true,
             secure: true,
             sameSite: 'None',
-            domain: '.jjarkulisch.github.io',
-            path: '/refresh_token',
-            maxAge: 1000 * 60 * 60 * 24 * 7
+            maxAge: 60 * 60 * 24 * 14
         });
 
         return res.status(200).json({
