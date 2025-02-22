@@ -16,7 +16,7 @@ const app = express();
 const port = 3000;
 
 app.use(cors({
-    origin: '*',
+    origin: ['https://jarkulisch-jonatan-64d3f-7znvs.hosting.ssps.cajthaml.eu', 'http://localhost:5173'],
     credentials: true,
     methods: ['GET', 'PUT', 'POST', 'PATCH']
 }));
